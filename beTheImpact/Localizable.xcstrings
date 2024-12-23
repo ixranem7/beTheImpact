@@ -1,7 +1,125 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " Use the camera to know the outfit:" : {
 
+    },
+    "Camera" : {
+
+    },
+    "Camera Instructions" : {
+
+    },
+    "How Zahi works" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف يعمل زاهي"
+          }
+        }
+      }
+    },
+    "How Zahi works?" : {
+
+    },
+    "Image of %@" : {
+
+    },
+    "It is an application aimed at making your daily life easier by helping you coordinate your outfits with harmonious colors and innovative visions, reflecting your unique taste and sense." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هو تطبيق يهدف إلى تسهيل حياتك اليومية، من خلال مساعدتك على تنسيق أزيائك بألوان متناغمة ورؤى مبتكرة، ليعكس ذوقك وإحساسك الفريد."
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "Make sure you are slightly away from the camera so the piece appears clearly" : {
+
+    },
+    "next" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التالي"
+          }
+        }
+      }
+    },
+    "Next" : {
+
+    },
+    "OK" : {
+
+    },
+    "Place it in front of the camera to see its details. After you take a picture of the second piece, we will tell you whether they are harmonious or not." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ضع الكاميرا أمام الملابس، وسيخبرك التطبيق بتفاصيلها ويوفر لك اقتراحات للتنسيق، و يمكنك حفظ تنسيقاتك المفضلة والرجوع إليها في أي وقت."
+          }
+        }
+      }
+    },
+    "Proceed to the next page or start the app" : {
+
+    },
+    "Skip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تخطي"
+          }
+        }
+      }
+    },
+    "Skip the onboarding process" : {
+
+    },
+    "Start Now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ابدأ الأن"
+          }
+        }
+      }
+    },
+    "Welcome to your digital wardrobe! " : {
+
+    },
+    "Welcome to Zahi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أهلاً بك في زاهي"
+          }
+        }
+      }
+    },
+    "Welcome to Zahi!" : {
+
+    },
+    "Your taste and vision... harmony and inspiration!" : {
+
+    }
   },
   "version" : "1.0"
 }

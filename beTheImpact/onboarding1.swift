@@ -5,6 +5,8 @@ struct ContentView: View {
     @State private var isMainPageActive = false // State variable to control the main page
 
     var body: some View {
+        
+       // OnboardingView1 {isMainPageActive = true}
         Group {
             if isSplashScreenActive {
                 SplashView {

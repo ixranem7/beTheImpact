@@ -1,11 +1,17 @@
+
 import SwiftUI
+
+
 struct ViewMainpage: View {
-@State private var showAlert = false
+    @State private var showAlert = false
+    @State private var showCamera: Bool = false
+    @State private var cameraError: CameraPermission.CameraError?
+    @State var cameraImage: UIImage?
     
     var body: some View {
         ZStack{
             VStack {
-                Text("Welcome to your digital wardrobe! ")
+                Text("Welcome to your digital wardrobe!")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0.3, green: 0.2, blue: 0.5, opacity: 1.0))
@@ -23,6 +29,8 @@ struct ViewMainpage: View {
                 
                 Button(action: {
                     showAlert = true
+            
+                    
                 }) {
                     Image(systemName: "camera")
                         .resizable()
@@ -46,11 +54,52 @@ struct ViewMainpage: View {
 
             }.blur(radius: showAlert ? 5 : 0)
                 
-            .alert("Camera Instructions ", isPresented: $showAlert) {
-                    Button("OK", role: .cancel) { }
+            .alert("Camera Instructions", isPresented: $showAlert) {
+                Button("OK", role: .cancel) {
+                    
+                    if let error = CameraPermission.checkPermission() {
+                        cameraError = error
+                    }else {
+                        showCamera.toggle()
+                       
+                    }
+                    
+                }
+        
                 }message: {
                 Text("Make sure you are slightly away from the camera so the piece appears clearly")
                 }
+                
+                .alert(isPresented: .constant(cameraError != nil), error: cameraError){ _ in
+                        Button("OK"){
+                            cameraError = nil
+                        }
+                    } message: { error in
+                        Text(error.recoverySuggestion ?? "Try again later") }
+                    .sheet(isPresented: $showCamera){
+                        UIKitCamera(selectedImage: $cameraImage)
+                            //.ignoresSafeArea()
+                    }
+                    
+                    if let image = cameraImage {
+                        Image(uiImage: image)
+                            .resizable()
+                            .frame(width: 300.0, height: 200.0)
+                        
+                    } else {
+//                        VStack{
+//                            Image(systemName:"photo.badge.plus")
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fit)
+//                                .frame(width: 80, height: 60)
+//                                .foregroundColor(Color(red: 0.984313725490196, green: 0.3803921568627451, blue: 0.07058823529411765))
+//                            Text("Upload Photo")
+//                                .font(.title)
+//                                .fontWeight(.bold)
+//                                .foregroundColor(Color(red: 0.984313725490196, green: 0.3803921568627451, blue: 0.07058823529411765))
+//                            //.offset(y: 55)
+//                        }
+                    }
                 
             
         }
@@ -61,3 +110,15 @@ struct ViewMainpage: View {
 #Preview {
     ViewMainpage()
 }
+
+//struct CameraView : View {
+//    @Binding var cameraImage: UIImage?
+//    @Binding var showCamera: Bool
+//    var body: some View {
+//        VStack{
+//            
+//            UIKitCamera(selectedImage: $cameraImage)
+//                    
+//        }
+//    }
+//}

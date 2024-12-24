@@ -2,13 +2,44 @@
   "sourceLanguage" : "en",
   "strings" : {
     " Use the camera to know the outfit:" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعمل الكاميرا لمعرفة القطعة:"
+          }
+        }
+      }
     },
-    "Camera" : {
-
+    "Camera Instructions " : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعليمات الكاميرا"
+          }
+        }
+      }
     },
-    "Camera Instructions" : {
-
+    "Camera is not available for this device" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الكاميرا غير متاحة على هذا الجهاز"
+          }
+        }
+      }
+    },
+    "Go to settings and enable camera" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اذهب إلى الإعدادات "
+          }
+        }
+      }
     },
     "How Zahi works" : {
       "extractionState" : "manual",
@@ -22,10 +53,24 @@
       }
     },
     "How Zahi works?" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف يعمل زاهي"
+          }
+        }
+      }
     },
     "Image of %@" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "صورة"
+          }
+        }
+      }
     },
     "It is an application aimed at making your daily life easier by helping you coordinate your outfits with harmonious colors and innovative visions, reflecting your unique taste and sense." : {
       "extractionState" : "manual",
@@ -39,10 +84,25 @@
       }
     },
     "Key" : {
-      "extractionState" : "manual"
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفتاح"
+          }
+        }
+      }
     },
     "Make sure you are slightly away from the camera so the piece appears clearly" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تأكد من أنك بعيداً قليلاً حتى تظهر القطعة بوضوح"
+          }
+        }
+      }
     },
     "next" : {
       "extractionState" : "manual",
@@ -56,10 +116,24 @@
       }
     },
     "Next" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التالي"
+          }
+        }
+      }
     },
     "OK" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "موافق"
+          }
+        }
+      }
     },
     "Place it in front of the camera to see its details. After you take a picture of the second piece, we will tell you whether they are harmonious or not." : {
       "extractionState" : "manual",
@@ -73,7 +147,14 @@
       }
     },
     "Proceed to the next page or start the app" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اذهب إلى الصفحة التالية، أو ابدأ التطبيق"
+          }
+        }
+      }
     },
     "Skip" : {
       "extractionState" : "manual",
@@ -87,7 +168,14 @@
       }
     },
     "Skip the onboarding process" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تخطي صفحة البداية "
+          }
+        }
+      }
     },
     "Start Now" : {
       "extractionState" : "manual",
@@ -101,7 +189,14 @@
       }
     },
     "Welcome to your digital wardrobe! " : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أهلاً بك في خزانتك الرقمية!"
+          }
+        }
+      }
     },
     "Welcome to Zahi" : {
       "extractionState" : "manual",
@@ -115,10 +210,34 @@
       }
     },
     "Welcome to Zahi!" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أهلاً بك في زاهي"
+          }
+        }
+      }
+    },
+    "You have not authorized camera use" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم تقم بالسماح باستخدام الكاميرا"
+          }
+        }
+      }
     },
     "Your taste and vision... harmony and inspiration!" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ذوقك ورؤيتك .. تناغم و إلهام!"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

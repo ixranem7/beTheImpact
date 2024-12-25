@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     " Use the camera to know the outfit:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -12,6 +13,7 @@
       }
     },
     "Camera Instructions " : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -30,6 +32,9 @@
           }
         }
       }
+    },
+    "Choose an option" : {
+
     },
     "Go to settings and enable camera" : {
       "localizations" : {
@@ -95,6 +100,7 @@
       }
     },
     "Make sure you are slightly away from the camera so the piece appears clearly" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -126,6 +132,7 @@
       }
     },
     "OK" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -188,7 +195,20 @@
         }
       }
     },
+    "Take a photo" : {
+
+    },
+    "Upload from Photos" : {
+
+    },
+    "Use the camera to explore your outfit:" : {
+
+    },
+    "Welcome to your digital wardrobe!" : {
+
+    },
     "Welcome to your digital wardrobe! " : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {

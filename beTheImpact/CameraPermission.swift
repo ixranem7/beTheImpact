@@ -17,7 +17,7 @@ enum CameraPermission {
         var errorDescription: String? {
             switch self {
             case .unauthorized:
-                return NSLocalizedString("You have not authorized camera use", comment: "")
+                return NSLocalizedString("You have nott authorized camera use", comment: "")
             case .notAvailable:
                 return NSLocalizedString("Camera is not available for this device", comment: "")
                 

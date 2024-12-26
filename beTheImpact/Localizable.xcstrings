@@ -12,6 +12,27 @@
         }
       }
     },
+    "%@" : {
+
+    },
+    "Another Piece" : {
+
+    },
+    "Another Piece Button" : {
+
+    },
+    "Back" : {
+
+    },
+    "Back Button" : {
+
+    },
+    "Back to home" : {
+
+    },
+    "camera button" : {
+
+    },
     "Camera Instructions " : {
       "extractionState" : "stale",
       "localizations" : {
@@ -34,6 +55,9 @@
       }
     },
     "Choose an option" : {
+
+    },
+    "Details" : {
 
     },
     "Go to settings and enable camera" : {
@@ -67,6 +91,9 @@
         }
       }
     },
+    "Image not found in Assets." : {
+
+    },
     "Image of %@" : {
       "localizations" : {
         "ar" : {
@@ -87,6 +114,15 @@
           }
         }
       }
+    },
+    "Item details" : {
+
+    },
+    "Item Details" : {
+
+    },
+    "Just a moment! We're working on finding the best result for you..." : {
+
     },
     "Key" : {
       "extractionState" : "manual",
@@ -132,7 +168,6 @@
       }
     },
     "OK" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -153,6 +188,9 @@
         }
       }
     },
+    "press to take a photo or upload an image" : {
+
+    },
     "Proceed to the next page or start the app" : {
       "localizations" : {
         "ar" : {
@@ -162,6 +200,15 @@
           }
         }
       }
+    },
+    "Save" : {
+
+    },
+    "Save Button" : {
+
+    },
+    "save outfit" : {
+
     },
     "Skip" : {
       "extractionState" : "manual",
@@ -198,10 +245,22 @@
     "Take a photo" : {
 
     },
+    "Try Again" : {
+
+    },
+    "Try Again Button" : {
+
+    },
     "Upload from Photos" : {
 
     },
-    "Use the camera to explore your outfit:" : {
+    "Use" : {
+
+    },
+    "Use the camera or upload to explore your outfit" : {
+
+    },
+    "Welcome" : {
 
     },
     "Welcome to your digital wardrobe!" : {

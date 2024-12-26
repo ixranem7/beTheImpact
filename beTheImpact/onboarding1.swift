@@ -35,7 +35,7 @@ struct SplashView: View {
                 .padding(.top, 100)
 
             Text("Your taste and vision... harmony and inspiration!")
-                .font(.system(size: 15, weight: .bold))
+                .font(.custom("Tajawal-Bold", size: 16))
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 200)
                 .foregroundColor(.pur) // Change color as needed
@@ -64,7 +64,7 @@ struct OnboardingView1: View {
                     onComplete() // Navigate to the main page
                 }) {
                     Text("Skip")
-                        .font(.headline)
+                        .font(.custom("Tajawal-Bold", size: 18))
                         .foregroundColor(.pur) // Change as needed
                 }
                 .padding(.top,50)
@@ -89,7 +89,7 @@ struct OnboardingView1: View {
                     }
                 }) {
                     Text(currentPage == totalPages - 1 ? "Start Now" : "Next")
-                        .font(.headline)
+                        .font(.custom("Tajawal-Bold", size: 18))
                         .foregroundColor(.white)
                         .frame(maxWidth: 340, maxHeight: 50)
                         .background(Color.pur) // Change as needed
@@ -122,8 +122,9 @@ struct OnboardingView1: View {
                             .accessibilityLabel("Image of \(index == 0 ? "Welcome to Zahi" : "How Zahi works")") // Image description
 
                         Text(index == 0 ? "Welcome to Zahi!" : "How Zahi works?")
-                            .font(.title)
-                            .fontWeight(.bold)
+                            .font(.custom("Tajawal-Bold", size: 28))
+                            //.font(.title)
+                            //.fontWeight(.bold)
                             .padding(.trailing, 150)
                             .padding(.top, 30)
                         Spacer().frame(height:0)// control between spaceing text
@@ -131,6 +132,9 @@ struct OnboardingView1: View {
                         Text(index == 0
                             ? "It is an application aimed at making your daily life easier by helping you coordinate your outfits with harmonious colors and innovative visions, reflecting your unique taste and sense."
                             : "Place it in front of the camera to see its details. After you take a picture of the second piece, we will tell you whether they are harmonious or not.")
+                        
+                        .font(.custom("Tajawal-Medium", size: 18))
+                        .lineSpacing(5)
                             .multilineTextAlignment(.leading)
                             .padding()
                             .accessibilityLabel(index == 0 ? "It is an application aimed at making your daily life easier by helping you coordinate your outfits with harmonious colors and innovative visions, reflecting your unique taste and sense.": "Place it in front of the camera to see its details. After you take a picture of the second piece, we will tell you whether they are harmonious or not.")

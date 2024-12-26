@@ -5,8 +5,9 @@ struct ViewMainpage: View {
     @State private var showActionSheet = false // To activate the ActionSheet
     @State private var showCamera: Bool = false // To determine when the camera should appear
     @State private var showImagePicker: Bool = false // To determine when the Image Picker should appear
+    @State private var showSelectedImage: Bool = false
     @State var cameraImage: UIImage? // To store the captured image
-    
+    @State private var cameraError: CameraPermission.CameraError?
     var body: some View {
         NavigationView {
             ZStack {
@@ -18,20 +19,25 @@ struct ViewMainpage: View {
                 )
                 .edgesIgnoringSafeArea(.all)
                 
-                VStack(spacing: 16) {
+                VStack(spacing: 18) {
                     // Main texts
                     Text("Welcome to your digital wardrobe!")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                        .font(.custom("Tajawal-Bold", size: 36))
+                        .lineSpacing(5)
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 30)
+                        .accessibilityLabel("Welcome")
+                        .accessibilityHint("Welcome to your digital wardrobe!")
                     
-                    Text("Use the camera or upload to explore your outfit:")
-                        .font(.headline)
+                    Text("Use the camera or upload to explore your outfit")
+                        .font(.custom("Tajawal-Regular", size: 18))
+                        .lineSpacing(5)
                         .foregroundColor(Color.white.opacity(0.8))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 40)
+                        .accessibilityLabel("Use")
+                        .accessibilityHint("Use the camera or upload to explore your outfit")
                     
                     Spacer()
                 }.padding(.top, 70)
@@ -59,6 +65,8 @@ struct ViewMainpage: View {
                     .padding(.top, 400)
                     .padding()
                     .scaleEffect(showActionSheet ? 1.1 : 1.0) // Zoom effect when pressed
+                    .accessibilityLabel("camera button")
+                    .accessibilityHint("press to take a photo or upload an image")
                     .animation(.spring(), value: showActionSheet)
                     
                     Spacer()
@@ -71,15 +79,28 @@ struct ViewMainpage: View {
                         title: Text("Choose an option"),
                         buttons: [
                             .default(Text("Take a photo")) {
-                                showCamera.toggle() // If the user chooses to take a photo
+                                if let error = CameraPermission.checkPermission() {
+                                    cameraError = error
+                                }else{
+                                    showCamera.toggle()
+                                    showSelectedImage=true
+                                }
+                                // If the user chooses to take a photo
                             },
                             .default(Text("Upload from Photos")) {
-                                showImagePicker.toggle() // If the user chooses to upload a photo
+                                showImagePicker.toggle()
+                               showSelectedImage=true// If the user chooses to upload a photo
                             },
                             .cancel() // Close the ActionSheet
                         ]
                     )
                 }
+                .alert(isPresented: .constant(cameraError != nil), error: cameraError){ _ in
+                    Button("OK"){
+                        cameraError = nil
+                    }
+                } message: { error in
+                    Text(error.recoverySuggestion ?? "Try again later") }
                 
                 // Display the camera in full-screen when selected
                 .fullScreenCover(isPresented: $showCamera) {
@@ -91,20 +112,29 @@ struct ViewMainpage: View {
                     ImagePicker(selectedImage: $cameraImage) // Show ImagePicker for selecting an image
                 }
                 
+                .fullScreenCover(isPresented: $showSelectedImage) {
+                    OutfitDetails(realImage:$cameraImage)}
                 // Display the captured or selected image
-                if let image = cameraImage {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 300)
-                        .cornerRadius(15)
-                        .shadow(radius: 10)
-                        .padding()
+                  
+               // if let image = cameraImage {
+                    //showSelectedImage = true
+                        
+//                    NavigationLink(destination: OutfitDetails(realImage: $cameraImage)){Text("Next")}
+                   // OutfitDetails(realImage: $cameraImage)
+//                    Image(uiImage: image)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 300, height: 300)
+//                        .cornerRadius(15)
+//                        .shadow(radius: 10)
+//                        .padding()
+                //}
+                     // Open the camera in a new view
                 }
             }
         }
     }
-}
+
 
 struct CameraView: View {
     @Binding var selectedImage: UIImage?
@@ -112,6 +142,12 @@ struct CameraView: View {
     var body: some View {
         UIKitCamera(selectedImage: $selectedImage)
             .edgesIgnoringSafeArea(.all) // Make the camera cover the entire screen
+//            .onAppear {
+//            if let image = selectedImage {
+//            // Fix orientation before processing the image
+//            selectedImage = image.fixOrientation() // Apply the orientation fix
+//            }
+//            }
     }
 }
 

@@ -1,9 +1,3 @@
-//
-//  SecondOutfitDetails.swift
-//  beTheImpact
-//
-//  Created by Wejdan Alghamdi on 28/06/1446 AH.
-//
 
 import SwiftUI
 import CoreML
@@ -11,12 +5,14 @@ import UIKit
 
 struct SecondOutfitDetails: View {
     @State private var predictionResult2: String? = nil
+    @State private var matchResult: String? = nil
+    @Binding var firstItemPrediction: String?
     @Binding var realImage2: UIImage?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack {
-                
                 VStack(alignment: .leading, spacing: 15) {
                     if let uiImage = realImage2 {
                         Image(uiImage: uiImage)
@@ -31,13 +27,13 @@ struct SecondOutfitDetails: View {
                         Text("Image not found in Assets.")
                             .foregroundColor(.red)
                     }
-                    
+
                     Text("Item Details")
                         .font(.custom("Tajawal-Bold", size: 18))
                         .foregroundColor(Color(hex: "#423F42"))
                         .accessibilityLabel("Item details")
                         .accessibilityHint("Item details")
-                    
+
                     if let prediction = predictionResult2 {
                         Text("\(prediction)")
                             .font(.custom("Tajawal-Regular", size: 18))
@@ -49,27 +45,84 @@ struct SecondOutfitDetails: View {
                             .foregroundColor(.gray)
                             .padding()
                     }
+                    if let match = matchResult {
+                        Text(match)
+                            .font(.custom("Tajawal-Regular", size: 18))
+                            .foregroundColor(match.contains("not") ? .red : .green)
+                            .accessibilityLabel("Matching result")
+                            .accessibilityHint(match)
+                    } else {
+                        Text("Determining if the items match...")
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
                 }
                 Spacer()
-                
-            }.navigationBarBackButtonHidden(true)
-                .navigationBarItems(
-                    trailing: NavigationLink( destination: ViewMainpage(), label: {Text("Finish").bold().foregroundColor(Color.pur)
-                    }))
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                trailing: NavigationLink(destination: ViewMainpage()) {
+                    Text("Finish").bold().foregroundColor(Color.pur)
+                }
+            )
         }
     }
-    
+
     // MARK: - Perform Prediction Logic
     func performPrediction(with image: UIImage) {
         DispatchQueue.global(qos: .userInitiated).async {
             let result = self.predictBestPrompt(from: image)
             DispatchQueue.main.async {
                 self.predictionResult2 = result
+
+                // Check if it matches the first clothing item
+                if let firstItemPrediction = self.firstItemPrediction,
+                   let secondItemPrediction = result {
+                    self.matchResult = checkIfItemsMatch(firstItem: firstItemPrediction, secondItem: secondItemPrediction)
+                } else {
+                    self.matchResult = "Unable to determine if the items match."
+                }
             }
         }
     }
-    
-    // MARK: - Prediction Logic (Moved Inside the View Struct)
+
+    // MARK: - Matching Logic
+//    func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
+//        // Define compatible pairs
+//        let compatiblePairs = [
+//            ("jeans", "shirt"),
+//            ("dress", "boots"),
+//            ("pants", "sweater"),
+//            ("skirt", "blouse"),
+//            ("jacket", "pants")
+//        ]
+//
+//        // Define incompatible pairs
+//        let incompatiblePairs = [
+//            ("jeans", "jeans"),
+//            ("skirt", "pants"),
+//            ("boots", "sandals")
+//        ]
+//
+//        // Check for compatibility
+//        for (cat1, cat2) in compatiblePairs {
+//            if firstItem.contains(cat1) && secondItem.contains(cat2) || firstItem.contains(cat2) && secondItem.contains(cat1) {
+//                return "These items match perfectly!"
+//            }
+//        }
+//
+//        // Check for incompatibility
+//        for (cat1, cat2) in incompatiblePairs {
+//            if firstItem.contains(cat1) && secondItem.contains(cat2) || firstItem.contains(cat2) && secondItem.contains(cat1) {
+//                return "These items do not match."
+//            }
+//        }
+//
+//        // Default case
+//        return "These items might match depending on style preferences."
+//    }
+
+    // MARK: - Prediction Logic
     func predictBestPrompt(from image: UIImage) -> String? {
         guard let pixelValues = image.preprocessForCLIP(targetSize: CGSize(width: 224, height: 224)) else {
             print("Failed to preprocess image.")
@@ -77,7 +130,6 @@ struct SecondOutfitDetails: View {
         }
 
         do {
-            // Safely unwrap the model using optional binding
             if let model = ModelManager.shared.model {
                 var bestPrompt: String? = nil
                 var highestScore: Float = -Float.infinity
@@ -114,7 +166,3 @@ struct SecondOutfitDetails: View {
         }
     }
 }
-
-//#Preview {
-//    SecondOutfitDetails()
-//}

@@ -129,7 +129,10 @@ struct OutfitDetails: View {
             }
             
             .fullScreenCover(isPresented: $showSelectedImage2) {
-                SecondOutfitDetails(realImage2:$cameraImage2)}
+                SecondOutfitDetails(firstItemPrediction: $predictionResult, realImage2: $cameraImage2)
+            }
+
+
             
         }
         .navigationBarBackButtonHidden(true)
@@ -205,7 +208,7 @@ struct OutfitDetails: View {
     }
 }
 
-// MARK: - Color Hex Initialization
+//// MARK: - Color Hex Initialization
 extension Color {
     init(hex: String) {
         let scanner = Scanner(string: hex)
@@ -218,3 +221,4 @@ extension Color {
         self.init(red: r, green: g, blue: b)
     }
 }
+

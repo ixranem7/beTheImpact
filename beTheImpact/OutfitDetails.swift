@@ -150,10 +150,13 @@ struct OutfitDetails: View {
     func performPrediction(with image: UIImage) {
         DispatchQueue.global(qos: .userInitiated).async {
             let result = self.predictBestPrompt(from: image)
-            DispatchQueue.main.async {
-                self.predictionResult = result
-            }
-        }
+            if let result = result {
+                        translateToArabic(result) { translatedResult in
+                            self.predictionResult = translatedResult
+                        }
+                    } else {
+                        self.predictionResult = "No prediction available."
+                    }        }
     }
     
     // MARK: - Prediction Logic (Moved Inside the View Struct)

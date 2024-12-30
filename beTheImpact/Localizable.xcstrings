@@ -24,12 +24,6 @@
     "Back" : {
 
     },
-    "Back Button" : {
-
-    },
-    "Back to home" : {
-
-    },
     "camera button" : {
 
     },
@@ -58,6 +52,9 @@
 
     },
     "Details" : {
+
+    },
+    "Finish" : {
 
     },
     "Go to settings and enable camera" : {
@@ -200,15 +197,6 @@
           }
         }
       }
-    },
-    "Save" : {
-
-    },
-    "Save Button" : {
-
-    },
-    "save outfit" : {
-
     },
     "Skip" : {
       "extractionState" : "manual",

@@ -20,10 +20,12 @@ struct SecondOutfitDetails: View {
                                     .resizable()
                                     .frame(width: 280, height: 300)
                                     .cornerRadius(10)
+                                    .padding(.top, 20)
                                     .onAppear {
                                         // Perform the prediction when the image appears
                                         performPrediction(with: uiImage)
                                     }
+
                             } else {
                                 Text("Image not found in Assets.")
                                     .foregroundColor(.red)
@@ -57,27 +59,23 @@ struct SecondOutfitDetails: View {
                         }
                         Spacer()
                         
-                        
-                        
-                        Button(action: {
-                            print("Button 2 tapped")
-                        }) {
-                            Text("Try Again")
-                                .font(.custom("Tajawal-Bold", size: 20))
-                                .foregroundColor(Color(hue: 0.729, saturation: 0.762, brightness: 0.268))
-                                .frame(maxWidth: .infinity, maxHeight: 50)
+                        VStack(spacing: 15){
                             
-                            //.padding()
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.pur, lineWidth: 1)
-                                )
+                            Button(action: {
+                                print("Button 2 tapped")
+                            }) {
+                                Text("Try Again")
+                                    .font(.custom("Tajawal-Bold", size: 20))
+                                    .frame(maxWidth: .infinity, maxHeight: 50)
+                                    .background(Color.pur)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                
+                            }
+                            .accessibilityLabel("Try Again Button")
+                            .accessibilityHint("Try Again")
                             
                         }
-                        .accessibilityLabel("Try Again Button")
-                        .accessibilityHint("Try Again")
-                        
-                        
                     } .navigationBarBackButtonHidden(true)
                         .toolbar{
                             ToolbarItem(placement: .navigationBarLeading){

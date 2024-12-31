@@ -11,91 +11,141 @@ struct SecondOutfitDetails: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
-        NavigationView {
-            VStack {
-                VStack(alignment: .leading, spacing: 15) {
-                    if let uiImage = realImage2 {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .frame(width: 280, height: 300)
-                            .cornerRadius(10)
-                            .onAppear {
-                                // Perform the prediction when the image appears
-                                performPrediction(with: uiImage)
+            NavigationView {
+                ZStack{
+                    VStack {
+                        VStack(alignment: .leading, spacing: 15) {
+                            if let uiImage = realImage2 {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .frame(width: 280, height: 300)
+                                    .cornerRadius(10)
+                                    .onAppear {
+                                        // Perform the prediction when the image appears
+                                        performPrediction(with: uiImage)
+                                    }
+                            } else {
+                                Text("Image not found in Assets.")
+                                    .foregroundColor(.red)
                             }
-                    } else {
-                        Text("Image not found in Assets.")
-                            .foregroundColor(.red)
-                    }
-
-                    Text("Item Details")
-                        .font(.custom("Tajawal-Bold", size: 18))
-                        .foregroundColor(Color(hex: "#423F42"))
-                        .accessibilityLabel("Item details")
-                        .accessibilityHint("Item details")
-
-                    if let prediction = predictionResult2 {
-                        Text("\(prediction)")
-                            .font(.custom("Tajawal-Regular", size: 18))
-                            .foregroundColor(Color(hex: "#423F42"))
-                            .accessibilityLabel("Details")
-                            .accessibilityHint("\(prediction)")
-                    } else {
-                        Text("Just a moment! We're working on finding the best result for you...")
-                            .foregroundColor(.gray)
-                            .padding()
-                    }
-                    if let match = matchResult {
-                        Text(match)
-                            .font(.custom("Tajawal-Regular", size: 18))
-                            .foregroundColor(match.contains("not") ? .red : .green)
-                            .accessibilityLabel("Matching result")
-                            .accessibilityHint(match)
-                    } else {
-                        Text("Determining if the items match...")
-                            .foregroundColor(.gray)
-                            .padding()
+                            
+                            Text("Item Details")
+                                .font(.custom("Tajawal-Bold", size: 18))
+                                .foregroundColor(Color.pur)
+                                .accessibilityLabel("Item details")
+                                .accessibilityHint("Item details")
+                            
+                            if let prediction = predictionResult2 {
+                                Text("\(prediction)")
+                                    .font(.custom("Tajawal-Regular", size: 18))
+                                    .foregroundColor(Color.pur)
+                                    .accessibilityLabel("Details")
+                                    .accessibilityHint("\(prediction)")
+                            }
+                            
+                            if let match = matchResult {
+                                Text(match)
+                                    .font(.custom("Tajawal-Regular", size: 18))
+                                    .foregroundColor(match.contains("not") ? .red : .green)
+                                    .accessibilityLabel("Matching result")
+                                    .accessibilityHint(match)
+                            } else {
+                                Text("Determining if the items match...")
+                                    .foregroundColor(.gray)
+                                    .padding()
+                            }
+                        }
+                        Spacer()
+                        
+                        
+                        
+                        Button(action: {
+                            print("Button 2 tapped")
+                        }) {
+                            Text("Try Again")
+                                .font(.custom("Tajawal-Bold", size: 20))
+                                .foregroundColor(Color(hue: 0.729, saturation: 0.762, brightness: 0.268))
+                                .frame(maxWidth: .infinity, maxHeight: 50)
+                            
+                            //.padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.pur, lineWidth: 1)
+                                )
+                            
+                        }
+                        .accessibilityLabel("Try Again Button")
+                        .accessibilityHint("Try Again")
+                        
+                        
+                    } .navigationBarBackButtonHidden(true)
+                        .toolbar{
+                            ToolbarItem(placement: .navigationBarLeading){
+                                Button(action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }){
+                                    Text("Back").bold()
+                                        .foregroundColor(Color.pur)
+                                }
+                            }}.padding()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    if showPopup {
+                        Color.black.opacity(0.4)
+                            .edgesIgnoringSafeArea(.all)
+                        VStack(spacing: 20) {
+                            LoadingSpinner()
+                                .frame(width: 50, height: 50)
+                            
+                                Text("Determining if the items match...")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                        }
+                        .padding()
+                        .frame(width: 300, height: 200)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 20)
                     }
                 }
-                Spacer()
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(
-                trailing: NavigationLink(destination: ViewMainpage()) {
-                    Text("Finish").bold().foregroundColor(Color.pur)
-                }
-            )
         }
-    }
-
-    // MARK: - Perform Prediction Logic
-//    func performPrediction(with image: UIImage) {
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            let result = self.predictBestPrompt(from: image)
-//            DispatchQueue.main.async {
-//                self.predictionResult2 = result
-//
-//                // Check if it matches the first clothing item
-//                if let firstItemPrediction = self.firstItemPrediction,
-//                   let secondItemPrediction = result {
-//                    self.matchResult = checkIfItemsMatch(firstItem: firstItemPrediction, secondItem: secondItemPrediction)
-//                } else {
-//                    self.matchResult = "Unable to determine if the items match."
-//                }
+//        if showPopup {
+//            Color.black.opacity(0.4)
+//                .edgesIgnoringSafeArea(.all)
+//            VStack(spacing: 20) {
+//                LoadingSpinner()
+//                    .frame(width: 50, height: 50)
+//                    .onAppear {
+//                        print("Loading spinner is active")
+//                    }
+//                
+//                Text("Determining if the items match...")
+//                    .font(.subheadline)
+//                    .foregroundColor(.gray)
+//                    .multilineTextAlignment(.center)
+//                    .padding(.horizontal)
 //            }
+//            .padding()
+//            .frame(width: 300, height: 200)
+//            .background(Color.white)
+//            .cornerRadius(10)
+//            .shadow(radius: 20)
 //        }
-//    }
+    
+
 //    func performPrediction(with image: UIImage) {
 //        DispatchQueue.global(qos: .userInitiated).async {
 //            let result = self.predictBestPrompt(from: image)
 //            DispatchQueue.main.async {
 //                if let result = result {
-//                    // Translate the prediction and set it for display
+//                    // Translate the prediction for display purposes
 //                    translateToArabic(result) { translatedResult in
-//                        self.predictionResult2 = translatedResult
+//                        self.predictionResult2 = translatedResult // Display the translated prediction
 //                    }
 //
-//                    // Check if it matches the first clothing item
+//                    // Pass the English prediction to the match function
 //                    if let firstItemPrediction = self.firstItemPrediction {
 //                        self.matchResult = checkIfItemsMatch(firstItem: firstItemPrediction, secondItem: result)
 //                    } else {
@@ -108,10 +158,19 @@ struct SecondOutfitDetails: View {
 //            }
 //        }
 //    }
+    @State private var showPopup = false // Popup state variable
+
     func performPrediction(with image: UIImage) {
+        // Show the popup before starting the prediction
+        self.showPopup = true
+        
         DispatchQueue.global(qos: .userInitiated).async {
             let result = self.predictBestPrompt(from: image)
+            
             DispatchQueue.main.async {
+                // Hide the popup after the prediction process completes
+                self.showPopup = false
+                
                 if let result = result {
                     // Translate the prediction for display purposes
                     translateToArabic(result) { translatedResult in

@@ -21,6 +21,9 @@
     "Another Piece Button" : {
 
     },
+    "App logo" : {
+
+    },
     "Back" : {
 
     },
@@ -90,6 +93,9 @@
           }
         }
       }
+    },
+    "How Zahi works." : {
+
     },
     "Image not found in Assets." : {
 
@@ -239,6 +245,15 @@
     "Take a photo" : {
 
     },
+    "This is a description of the app." : {
+
+    },
+    "This is the title of the onboarding page." : {
+
+    },
+    "This text provides additional information about the app." : {
+
+    },
     "Try Again" : {
 
     },
@@ -292,6 +307,9 @@
         }
       }
     },
+    "Welcome to Zahi." : {
+
+    },
     "You have not authorized camera use" : {
       "localizations" : {
         "ar" : {
@@ -301,6 +319,9 @@
           }
         }
       }
+    },
+    "Your taste and vision, harmony and inspiration." : {
+
     },
     "Your taste and vision... harmony and inspiration!" : {
       "localizations" : {

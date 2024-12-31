@@ -9,10 +9,42 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
     let normalizedFirstItem = firstItem.lowercased()
     let normalizedSecondItem = secondItem.lowercased()    // Define compatible pairs
     let compatiblePairs = [
-        // Categories
+//        ("cardigan", "leggings"), // Cozy casual
+//        ("cropped jeans", "tank top"), // Light summer pairing
+//        ("peacoat", "scarf") // Classic winter style
+//        ("blazer", "trousers") // Business formal
+//        ("athletic shoes", "bike shorts") // Sporty and functional
+//        ("ankle boots", "skinny jeans") // Polished casual
+//        ("formal trousers", "silk blouse") // Sophisticated office look
+//        ("wrap dress", "espadrilles") // Feminine and breezy
+//        ("straw hat", "linen pants") // Light and breathable
+//        ("sandals", "shorts") // Perfect for hot weather
+//        ("thermal turtleneck", "wool trousers") // Warm and formal
+//        ("parka", "snow boots") // Extreme cold gear
+//        ("chunky knit sweater", "corduroy pants") // Cozy and rustic
+//        ("denim jacket", "floral dress") // Light layering
+//        ("raincoat", "rubber boots") // Functional for rain
+//        ("flannel shirt", "denim jeans") // Rustic fall pairing
+//        ("suede jacket", "scarf") // Textured and warm
+//        ("cocktail dress", "strappy heels") // Party-ready
+//        ("jumpsuit", "gold belt") // Modern and sleek
+//        ("khakis", "polo shirt") // Casual business
+//        ("hiking boots", "cargo pants") // Outdoor adventure
+//        ("oxford shoes", "button-up shirt") // Smart casual
+//        ("oversized blazer", "pleated skirt") // Modern chic
+//        ("tie-dye shirt", "distressed jeans") // Boho casual
+//        ("bucket hat", "matching tracksuit") // Retro street style
+//        ("wide-leg trousers", "cropped sweater") // Fashion-forward
+//        ("all white") // Clean and crisp
+//        ("all black") // Sophisticated and sleek
+//        ("navy and cobalt") // Tonal pairing
+//        ("olive green", "burnt orange") // Earthy tones
+//        ("red", "navy") // Bold and balanced
+//        ("teal", "peach") // Vibrant yet complementary
         ("jeans", "t-shirt"),  // Classic casual
         ("skirt", "blouse"),  // Feminine and balanced
         ("boots", "jeans"),  // Rugged and functional
+        ("dress", "jeans"),  // Rugged and functional
         ("sandals", "shorts"),  // Perfect for summer
         ("coat", "trousers"),  // Winter-ready and formal
         ("sneakers", "joggers"),  // Activewear
@@ -20,15 +52,29 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
         ("scarf", "jacket"),  // Layered look
         ("blazer", "slacks"),  // Business formal
         ("cardigan", "midi dress"),
-
-        // Specific Items
-        ("a floral summer dress", "a pair of white flat shoes"),  // Light and airy
+        ("cropped jeans", "tank top"),  // Summery and casual
+         ("joggers", "graphic t-shirt"),  // Relaxed and trendy
+         ("leather jacket", "black skinny jeans"),  // Edgy and sleek
+         ("cardigan", "leggings"),  // Cozy casual
+         ("peacoat", "scarf"),  // Classic winter style
+        ("jeans", "shirt"),  // Classic casual
+         ("a white button-down shirt", "a pair of tan chinos"),  // Clean and
+         ("a black turtleneck sweater", "a plaid midi skirt"),  // Cozy and
+         ("a pair of white sneakers", "a denim romper"),  // Fun and youthful
+         ("a navy wool blazer", "a pair of grey dress pants"),  // Office ready
+         ("a pair of suede ankle boots", "a floral wrap dress"),  // Elegant and
+         ("black", "gold"),  // Chic and elegant
+         ("purple", "silver"),  // Futuristic and stylish
+         ("emerald green", "white"),  // Crisp and rich
+         ("navy blue", "light grey"),  // Subtle and modern
+         ("peach", "cream"),
+        ("a floral summer dress", "a pair of white flat shoes"),  // Light and
         ("a pair of skinny blue jeans", "a white cotton shirt with long sleeves"),  // Casual chic
-        ("a red cotton T-shirt", "a pair of navy sports leggings"),  // Comfortable and sporty
-        ("a beige knitted cardigan", "a pair of navy classic shoes"),  // Warm and professional
+        ("a red cotton T-shirt", "a pair of navy sports leggings"),  //  and
+        ("a beige knitted cardigan", "a pair of navy classic shoes"),  // Warm
         ("a black midi pencil skirt", "a white linen blouse"),  // Office-ready
-        ("a cream crochet blouse", "a light pink chiffon scarf"),  // Feminine and graceful
-        ("a camel wrap coat", "a pair of brown leather boots"),  // Winter stylish
+        ("a cream crochet blouse", "a light pink chiffon scarf"),  // Feminine
+        ("a camel wrap coat", "a pair of brown leather boots"),  // Winter
         ("a coral maxi dress", "a pair of tan espadrille wedges"),  // Breezy and summery
         ("a pair of dark brown Chelsea boots", "a beige coat with a belt"),  // Polished casual
         ("a navy turtleneck sweater", "a pair of grey wool trousers"),  // Smart winter look
@@ -64,6 +110,31 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
             ("coat", "scarf"),  // Winter-ready
             ("puffer jacket", "jeans"),  // Cold-weather casual
             ("hoodie", "joggers"),  // Casual lounge wear
+        ("purple", "yellow"),  // Too bold and clashing
+        ("red", "purple"),  // Overwhelming warm tones
+        ("bright blue", "neon green"),  // Overpowering vibrancy
+        ("brown", "purple"),  // Heavy and mismatched
+        ("teal", "bright orange"),  // Overly bright and competing
+
+        // New Seasonal Mismatches
+        ("a summer hat", "a wool coat"),  // Seasonal mismatch
+        ("flip-flops", "a trench coat"),  // Casual with formal cold-weather wear
+        ("a bikini", "a knit sweater"),  // Beachwear with winter warmth
+        ("swim trunks", "a fleece jacket"),  // Summer with winter
+
+        // New Formality Clashes
+        ("formal trousers", "a hoodie"),  // Dressy with casual
+        ("a sequin top", "hiking boots"),  // Glamorous with rugged
+        ("a ball gown", "a denim jacket"),  // High-end formal with casual
+        ("a tuxedo", "flip-flops"),  // Ultra-formal with casual
+        ("a velvet blazer", "cargo shorts"),  // Luxurious with rugged
+
+        // New Functional Mismatches
+        ("ski boots", "a sundress"),  // Winter gear with summer wear
+        ("hiking boots", "a maxi dress"),  // Rugged with flowing
+        ("raincoat", "formal suit"),  // Functional with business
+        ("track pants", "a silk blouse"),  // Athletic with elegant
+        ("climbing shoes", "a chiffon dress"),
 
             // Formality
             ("formal jacket", "dress shirt"),  // Office-ready
@@ -133,12 +204,42 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
             ("a navy pencil skirt", "a white linen shirt"),  // Office-ready
             ("a maroon velvet midi dress", "a pair of gold block heels"),  // Luxurious evening wear
             ("a pair of beige hiking sandals", "a cream crochet blouse"),  // Relaxed and casual
-            ("a red velvet wrap midi skirt", "a black satin bell-sleeve top"),  // Elegant and festive// Summer formal
+            ("a red velvet wrap midi skirt", "a black satin bell-sleeve top"),
+        // Elegant and festive// Summer formal
     ]
 
 
     // Define incompatible pairs
     let incompatiblePairs =  [
+        ("flip-flops", "puffer jacket"), // Summer footwear with winter gear
+        ("wool sweater", "shorts"),// Winter top with summer bottoms
+        ("ski pants", "tank top"), // Cold-weather bottoms with summer top
+        ("parka", "sundress"), // Heavy coat with lightweight dress
+        ("snow boots", "bikini"), // Extreme winter with beachwear
+
+        ("ball gown", "denim jacket"), // High formal with casual
+        ("formal trousers", "graphic t-shirt"), // Business with casual
+        ("evening gown", "sneakers"), // Elegant with athletic
+        ("tuxedo", "flip-flops"), // Ultra-formal with casual
+        ("pencil skirt", "sweatshirt"),// Office with relaxed
+
+        ("rain boots", "formal dress"), // Practical with elegant
+        ("ski boots", "maxi dress"), // Rugged with flowing
+        ("track pants", "high heels"), // Athletic with formal
+        ("climbing shoes", "evening gown"), // Rugged with delicate
+        ("swimsuit", "heavy coat"), // Beachwear with winter gear
+
+        ("sports jersey", "business suit"), // Athletic vs. professional
+        ("crocs", "cocktail dress"), // Casual with formal
+        ("puffer jacket", "ball gown"), // Casual winter with high-end
+        ("shorts", "formal blazer"), // Casual vs. business
+        ("denim jacket", "evening gown"), // Casual vs. glamorous
+
+        ("bright orange", "hot pink"), // Overwhelming vibrancy
+        ("lime green", "red"), // Strong and clashing
+        ("yellow", "neon green"),// Too loud
+        ("navy", "black"), // Too dark together
+        ("brown", "purple"), // Muted and heavy
         // Categories
         ("boots", "flip-flops"),  // Conflicting seasonal footwear
           ("heels", "sandals"),  // Formal vs. casual
@@ -165,7 +266,13 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
           ("flip-flops", "heavy coat"),  // Beach with winter
           ("flannel shirt", "sundress"),  // Winter shirt with summer dress
           ("parka", "sundress"),  // Winter wear with spring dress
-          ("bikini", "heavy winter jacket"),  // Contradictory seasonal wear
+          ("bikini", "heavy winter jacket"),
+        // Contradictory seasonal wear
+        ("dress", "jeans"),
+        ("dress", "pants"),
+        ("dress", "skirt"),
+
+
 
           // Formality Clashes
           ("formal suit", "t-shirt"),  // Professional vs. casual
@@ -251,6 +358,7 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
         ("navy", "black"),  // Too dark together
         ("grey", "beige"),  // Muted and unappealing
         ("bright orange", "pastel yellow"),  // Overly vibrant mismatch
+        ("red", "brown"),  // Overly vibrant mismatch
 
         // Occasions
         ("a blush pink chiffon wrap dress", "a pair of black climbing shoes"),  // Feminine with rugged

@@ -69,22 +69,46 @@ struct SecondOutfitDetails: View {
     }
 
     // MARK: - Perform Prediction Logic
+//    func performPrediction(with image: UIImage) {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let result = self.predictBestPrompt(from: image)
+//            DispatchQueue.main.async {
+//                self.predictionResult2 = result
+//
+//                // Check if it matches the first clothing item
+//                if let firstItemPrediction = self.firstItemPrediction,
+//                   let secondItemPrediction = result {
+//                    self.matchResult = checkIfItemsMatch(firstItem: firstItemPrediction, secondItem: secondItemPrediction)
+//                } else {
+//                    self.matchResult = "Unable to determine if the items match."
+//                }
+//            }
+//        }
+//    }
     func performPrediction(with image: UIImage) {
         DispatchQueue.global(qos: .userInitiated).async {
             let result = self.predictBestPrompt(from: image)
             DispatchQueue.main.async {
-                self.predictionResult2 = result
+                if let result = result {
+                    // Translate the prediction and set it for display
+                    translateToArabic(result) { translatedResult in
+                        self.predictionResult2 = translatedResult
+                    }
 
-                // Check if it matches the first clothing item
-                if let firstItemPrediction = self.firstItemPrediction,
-                   let secondItemPrediction = result {
-                    self.matchResult = checkIfItemsMatch(firstItem: firstItemPrediction, secondItem: secondItemPrediction)
+                    // Check if it matches the first clothing item
+                    if let firstItemPrediction = self.firstItemPrediction {
+                        self.matchResult = checkIfItemsMatch(firstItem: firstItemPrediction, secondItem: result)
+                    } else {
+                        self.matchResult = "Unable to determine if the items match."
+                    }
                 } else {
+                    self.predictionResult2 = "No prediction available."
                     self.matchResult = "Unable to determine if the items match."
                 }
             }
         }
     }
+
 
     // MARK: - Matching Logic
 //    func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {

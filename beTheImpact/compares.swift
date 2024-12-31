@@ -9,38 +9,6 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
     let normalizedFirstItem = firstItem.lowercased()
     let normalizedSecondItem = secondItem.lowercased()    // Define compatible pairs
     let compatiblePairs = [
-//        ("cardigan", "leggings"), // Cozy casual
-//        ("cropped jeans", "tank top"), // Light summer pairing
-//        ("peacoat", "scarf") // Classic winter style
-//        ("blazer", "trousers") // Business formal
-//        ("athletic shoes", "bike shorts") // Sporty and functional
-//        ("ankle boots", "skinny jeans") // Polished casual
-//        ("formal trousers", "silk blouse") // Sophisticated office look
-//        ("wrap dress", "espadrilles") // Feminine and breezy
-//        ("straw hat", "linen pants") // Light and breathable
-//        ("sandals", "shorts") // Perfect for hot weather
-//        ("thermal turtleneck", "wool trousers") // Warm and formal
-//        ("parka", "snow boots") // Extreme cold gear
-//        ("chunky knit sweater", "corduroy pants") // Cozy and rustic
-//        ("denim jacket", "floral dress") // Light layering
-//        ("raincoat", "rubber boots") // Functional for rain
-//        ("flannel shirt", "denim jeans") // Rustic fall pairing
-//        ("suede jacket", "scarf") // Textured and warm
-//        ("cocktail dress", "strappy heels") // Party-ready
-//        ("jumpsuit", "gold belt") // Modern and sleek
-//        ("khakis", "polo shirt") // Casual business
-//        ("hiking boots", "cargo pants") // Outdoor adventure
-//        ("oxford shoes", "button-up shirt") // Smart casual
-//        ("oversized blazer", "pleated skirt") // Modern chic
-//        ("tie-dye shirt", "distressed jeans") // Boho casual
-//        ("bucket hat", "matching tracksuit") // Retro street style
-//        ("wide-leg trousers", "cropped sweater") // Fashion-forward
-//        ("all white") // Clean and crisp
-//        ("all black") // Sophisticated and sleek
-//        ("navy and cobalt") // Tonal pairing
-//        ("olive green", "burnt orange") // Earthy tones
-//        ("red", "navy") // Bold and balanced
-//        ("teal", "peach") // Vibrant yet complementary
         ("jeans", "t-shirt"),  // Classic casual
         ("skirt", "blouse"),  // Feminine and balanced
         ("boots", "jeans"),  // Rugged and functional
@@ -205,7 +173,79 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
             ("a maroon velvet midi dress", "a pair of gold block heels"),  // Luxurious evening wear
             ("a pair of beige hiking sandals", "a cream crochet blouse"),  // Relaxed and casual
             ("a red velvet wrap midi skirt", "a black satin bell-sleeve top"),
-        // Elegant and festive// Summer formal
+        ("cropped blazer", "high-waisted trousers"),  // Trendy and chic
+        ("denim skirt", "striped sweater"),  // Casual and stylish
+        ("wide-leg pants", "wrap blouse"),  // Elegant and flowy
+        ("lace dress", "wool coat"),  // Feminine and winter-ready
+        ("floral skirt", "chunky knit sweater"),  // Spring meets cozy
+        ("tailored shorts", "silk blouse"),  // Polished summer look
+        ("midi skirt", "turtleneck sweater"),  // Classic and cozy
+        ("leather pants", "oversized blazer"),  // Edgy and structured
+        ("sequined dress", "faux fur coat"),  // Glamorous and warm
+        ("denim skirt", "graphic t-shirt"),  // Relaxed and fun
+        ("joggers", "crop top"),  // Comfortable and trendy
+        ("boyfriend jeans", "knit sweater"),  // Cozy and stylish
+        ("chinos", "polo shirt"),  // Clean and casual
+        ("cargo pants", "henley shirt"),  // Rugged and relaxed
+        ("shorts", "tank top"),  // Summer-ready
+        ("leggings", "oversized hoodie"),  // Comfortable athleisure
+        ("denim jacket", "striped t-shirt"),  // Classic casual
+        ("cropped jeans", "off-shoulder top"),  // Chic and summery
+        ("sneakers", "casual dress"),  // Sporty and feminine
+        ("pencil skirt", "button-down shirt"),  // Sleek and professional
+        ("trousers", "blazer"),  // Classic business formal
+        ("wrap dress", "pointed flats"),  // Polished and comfortable
+        ("high-waisted trousers", "silk blouse"),  // Elegant and modern
+        ("midi skirt", "turtleneck sweater"),  // Sophisticated and cozy
+        ("cardigan", "shift dress"),  // Layered office look
+        ("peacoat", "slacks"),  // Winter office wear
+        ("heels", "tailored jumpsuit"),  // Stylish and professional
+        ("blazer", "wide-leg trousers"),  // Structured and sleek
+        ("white blouse", "pleated skirt"),  // Feminine and professional
+        ("sequined dress", "stiletto heels"),  // Glamorous and elegant
+        ("long gown", "statement necklace"),  // Classic evening wear
+        ("velvet blazer", "dress pants"),  // Luxe and sharp
+        ("midi dress", "strappy sandals"),  // Sophisticated and chic
+        ("wrap dress", "ankle boots"),  // Versatile and stylish
+        ("a-line skirt", "lace blouse"),  // Feminine and elegant
+        ("cocktail dress", "peep-toe heels"),  // Perfect for parties
+        ("jumpsuit", "metallic clutch"),  // Modern and sleek
+        ("maxi dress", "shawl"),  // Evening-ready
+        ("suit", "oxford shoes"),  // Timeless and formal
+        ("floral dress", "light cardigan"),  // Fresh and breezy
+        ("pastel skirt", "white blouse"),  // Soft and feminine
+        ("capri pants", "peasant top"),  // Airy and casual
+        ("denim jacket", "sundress"),  // Layered and spring-ready
+        ("chiffon blouse", "pleated trousers"),  // Flowing and lig
+        ("linen pants", "crop top"),  // Cool and breathable
+        ("sundress", "straw hat"),  // Ideal for warm weather
+        ("shorts", "breezy tank top"),  // Effortless and cool
+        ("espadrilles", "maxi dress"),  // Summery and chic
+        ("denim shorts", "halter top"),  // Casual and fun
+        ("wool coat", "chunky scarf"),  // Cozy and timeless
+        ("puffer jacket", "thermal leggings"),  // Practical and warm
+        ("sweater dress", "tall boots"),  // Feminine and cozy
+        ("cashmere sweater", "wide-leg pants"),  // Elegant and warm
+        ("knit sweater", "faux fur vest"),  // Luxe and
+        ("plaid shirt", "corduroy pants"),  // Cozy and seasonal
+        ("ankle boots", "knit dress"),  // Stylish and warm
+        ("turtleneck sweater", "wool skirt"),  // Classic fall look
+        ("long cardigan", "high-waisted jeans"),  // Relaxed and chic
+        ("trench coat", "midi dress"),  // Layered for crisp weather
+        ("leggings", "sports bra"),  // Workout-ready
+        ("track pants", "hoodie"),  // Comfortable and sporty
+        ("biker shorts", "oversized t-shirt"),  // Trendy and functional
+        ("running shoes", "joggers"),  // Active and comfortable
+        ("tank top", "athletic skirt"),  // Sporty and feminine
+        ("windbreaker", "compression pants"),  // Weather-resistant
+        ("sneakers", "cargo joggers"),  // Rugged yet athletic
+        ("turtleneck", "pinafore dress"),  // Cozy and layered
+        ("denim jacket", "maxi dress"),  // Casual and balanced
+        ("long cardigan", "belted jeans"),  // Stylish and warm
+        ("scarf", "wool coat"),  // Classic and functional
+        ("blazer", "cropped trousers"),  // Sleek and modern
+        ("coat", "ankle boots"),  // Winter-ready
+        ("button-up shirt", "sweater"),  // Preppy and warm
     ]
 
 
@@ -365,8 +405,85 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
         ("a burgundy velvet gown", "a pair of grey sports shoes"),  // Formal with athletic
         ("a navy blue sleeveless midi dress", "a black hooded parka with fur trim"),  // Summer with winter
         ("a camel faux fur vest", "a turquoise bikini top"),  // Winter with beachwear
-        ("a white satin maxi dress", "a pair of black leather combat boots"),  // Bridal with edgy
-    ]
+        ("a white satin maxi dress", "a pair of black leather combat boots"),
+        ("skirt", "skirt"),  // Redundant
+        ("dress", "dress"),  // Overlapping purpose
+        ("jeans", "jeans"),  // Impractical
+        ("pants", "pants"),  // Overlap
+
+        // Overlapping items
+        ("skirt", "dress"),  // Overlapping wear
+        ("pants", "skirt"),  // Clashing function
+        ("jeans", "dress"),  // Redundant and mismatched
+        ("shorts", "skirt"),  // Layering conflict
+        ("leggings", "jeans"),  // Overlapping bottoms
+
+        // Additional specific cases
+        ("trench coat", "blazer"),  // Overlap of formal outerwear
+        ("jacket", "coat"),  // Too many layers
+        ("swimsuit", "dress"),  // Clashing functions
+        ("parka", "cardigan"),  // Conflicting outerwear
+        ("jeans", "leggings"),
+        ("skirt", "skirt"),  // Two skirts are redundant
+        ("dress", "dress"),  // Two dresses are overlapping
+        ("jeans", "jeans"),  // Duplicate casual wear
+        ("pants", "pants"),  // Redundant formal or casual bottoms
+        ("shorts", "shorts"),  // Impractical layering
+        ("leggings", "leggings"),  // Duplicate casual layer
+        ("trench coat", "trench coat"),  // Overly layered and heavy
+        ("cardigan", "cardigan"),  // Redundant and unnecessary
+        ("t-shirt", "t-shirt"),  // Impractical layering
+        ("tank top", "tank top"),  // Duplicate summer top
+        ("sweater", "sweater"),  // Overlapping layers
+        ("jacket", "jacket"),  // Over-layered
+        ("blazer", "blazer"),  // Two formal outerwear pieces
+        ("boots", "boots"),  // Overlapping footwear
+        ("skirt", "dress"),  // Dress overlaps with a skirt
+        ("pants", "skirt"),  // Bottoms clash
+        ("jeans", "dress"),  // Redundant and clashing
+        ("shorts", "skirt"),  // Unnecessary layering
+        ("leggings", "jeans"),  // Overlapping casual bottoms
+        ("coat", "jacket"),  // Conflicting outerwear
+        ("blazer", "cardigan"),  // Two formal layers
+        ("sweater", "blazer"),  // Overlap between casual and formal layers
+        ("boots", "sandals"),  // Conflicting seasonal footwear
+        ("heels", "flats"),  // Clashing formal and casual
+        ("scarf", "scarf"),  // Duplicate accessory
+        ("belt", "belt"),  // Redundant
+        ("skirt", "pants"),  // Formal vs casual bottoms
+        ("dress", "shorts"),  // Full outfit with casual wear
+        ("jumpsuit", "skirt"),  // Complete outfit clashes with layering
+        ("tank top", "coat"),  // Summer wear vs. winter
+        ("blazer", "hoodie"),  // Formal with casual layering
+        ("heels", "hiking boots"),  // Formal vs rugged
+        ("flannel", "trench coat"),  // Casual vs formal clash
+        ("suit", "shorts"),  // Business with summer wear
+        ("gown", "denim jacket"),  // Glamorous with casual
+        ("tuxedo", "cargo pants"),  //
+        ("bikini", "wool coat"),  // Beachwear with winter gear
+        ("shorts", "puffer jacket"),  // Summer vs winter
+        ("sundress", "snow boots"),  // Summer with extreme winter
+        ("flip-flops", "parka"),  // Summer footwear with winter outerwear
+        ("tank top", "fleece jacket"),  // Lightweight with heavy
+        ("swimsuit", "boots"),  // Beachwear with rugged footwear
+        ("shorts", "scarf"),  // Sum
+        ("dress", "jeans"),  // Redundant and bulky
+        ("skirt", "leggings"),  // Overlapping bottoms
+        ("jacket", "cardigan"),  // Too many outer layers
+        ("blazer", "tank top"),  // Formal with casual
+        ("jeans", "shorts"),  // Layering clash
+        ("t-shirt", "button-down shirt"),  // Overlapping casual tops
+        ("parka", "sweater"),  // Excessive layering
+        ("a-line skirt", "pencil skirt"),  // Two skirts of different cuts
+        ("shift dress", "wrap dress"),  // Overlapping dress styles
+        ("straight-leg jeans", "skinny jeans"),  // Redundant casual bottoms
+        ("crew neck sweater", "v-neck sweater"),  // Duplicate winter tops
+        ("leather jacket", "denim jacket"),  // Too many heavy layers
+        ("formal trousers", "cargo pants"),  // Formal vs casual clash
+        ("swim trunks", "ski pants"),  // Beach vs winter gear
+        ("sandals", "snow boots"),  // Summer vs extreme winter
+        ("cropped jeans", "leggings"),  // Over
+]
 
 
     // Check for compatibility

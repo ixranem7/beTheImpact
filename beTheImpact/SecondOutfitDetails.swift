@@ -85,17 +85,40 @@ struct SecondOutfitDetails: View {
 //            }
 //        }
 //    }
+//    func performPrediction(with image: UIImage) {
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            let result = self.predictBestPrompt(from: image)
+//            DispatchQueue.main.async {
+//                if let result = result {
+//                    // Translate the prediction and set it for display
+//                    translateToArabic(result) { translatedResult in
+//                        self.predictionResult2 = translatedResult
+//                    }
+//
+//                    // Check if it matches the first clothing item
+//                    if let firstItemPrediction = self.firstItemPrediction {
+//                        self.matchResult = checkIfItemsMatch(firstItem: firstItemPrediction, secondItem: result)
+//                    } else {
+//                        self.matchResult = "Unable to determine if the items match."
+//                    }
+//                } else {
+//                    self.predictionResult2 = "No prediction available."
+//                    self.matchResult = "Unable to determine if the items match."
+//                }
+//            }
+//        }
+//    }
     func performPrediction(with image: UIImage) {
         DispatchQueue.global(qos: .userInitiated).async {
             let result = self.predictBestPrompt(from: image)
             DispatchQueue.main.async {
                 if let result = result {
-                    // Translate the prediction and set it for display
+                    // Translate the prediction for display purposes
                     translateToArabic(result) { translatedResult in
-                        self.predictionResult2 = translatedResult
+                        self.predictionResult2 = translatedResult // Display the translated prediction
                     }
 
-                    // Check if it matches the first clothing item
+                    // Pass the English prediction to the match function
                     if let firstItemPrediction = self.firstItemPrediction {
                         self.matchResult = checkIfItemsMatch(firstItem: firstItemPrediction, secondItem: result)
                     } else {

@@ -54,11 +54,29 @@
     "Choose an option" : {
 
     },
+    "Default_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These items might match depending on style preferences."
+          }
+        }
+      }
+    },
     "Details" : {
 
     },
     "Determining if the items match..." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"دعنا نرى... هل ملابسك تنسجم معًا بأناقة؟\""
+          }
+        }
+      }
     },
     "Finish" : {
 
@@ -140,6 +158,9 @@
           }
         }
       }
+    },
+    "Key 1" : {
+      "extractionState" : "manual"
     },
     "Make sure you are slightly away from the camera so the piece appears clearly" : {
       "extractionState" : "stale",
@@ -244,6 +265,40 @@
     },
     "Take a photo" : {
 
+    },
+    "These_items_do_not_match" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يبدو أن هذه القطع لا تتناسق معًا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These items do not match."
+          }
+        }
+      }
+    },
+    "These_items_match_perfectly" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رائع! هذه القطع تتناسق معًا بشكل مثالي!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These items match perfectly!"
+          }
+        }
+      }
     },
     "This is a description of the app." : {
 

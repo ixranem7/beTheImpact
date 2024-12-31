@@ -4,7 +4,7 @@
 //
 //  Created by Reem on 29/06/1446 AH.
 //
-
+import Foundation
 func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
     let normalizedFirstItem = firstItem.lowercased()
     let normalizedSecondItem = secondItem.lowercased()    // Define compatible pairs
@@ -487,20 +487,39 @@ func checkIfItemsMatch(firstItem: String, secondItem: String) -> String {
 
 
     // Check for compatibility
+//    for (cat1, cat2) in incompatiblePairs {
+//         if (normalizedFirstItem.contains(cat1) && normalizedSecondItem.contains(cat2)) ||
+//            (normalizedFirstItem.contains(cat2) && normalizedSecondItem.contains(cat1)) {
+//             return NSLocalizedString("These_items_do_not_match", comment: "Message shown when items do not match")
+//         }
+//     }
+//    // Check for incompatibility
+//    for (cat1, cat2) in compatiblePairs {
+//         if (normalizedFirstItem.contains(cat1) && normalizedSecondItem.contains(cat2)) ||
+//            (normalizedFirstItem.contains(cat2) && normalizedSecondItem.contains(cat1)) {
+//             return "These items match perfectly!"
+//         }
+//     }
+//
+//    // Default case
+//    return "These items might match depending on style preferences."
+    // Check for compatibility
     for (cat1, cat2) in incompatiblePairs {
-         if (normalizedFirstItem.contains(cat1) && normalizedSecondItem.contains(cat2)) ||
-            (normalizedFirstItem.contains(cat2) && normalizedSecondItem.contains(cat1)) {
-             return "These items do not match."
-         }
-     }
+        if (normalizedFirstItem.contains(cat1) && normalizedSecondItem.contains(cat2)) ||
+           (normalizedFirstItem.contains(cat2) && normalizedSecondItem.contains(cat1)) {
+            return NSLocalizedString("These_items_do_not_match", comment: "Message shown when items do not match")
+        }
+    }
+
     // Check for incompatibility
     for (cat1, cat2) in compatiblePairs {
-         if (normalizedFirstItem.contains(cat1) && normalizedSecondItem.contains(cat2)) ||
-            (normalizedFirstItem.contains(cat2) && normalizedSecondItem.contains(cat1)) {
-             return "These items match perfectly!"
-         }
-     }
+        if (normalizedFirstItem.contains(cat1) && normalizedSecondItem.contains(cat2)) ||
+           (normalizedFirstItem.contains(cat2) && normalizedSecondItem.contains(cat1)) {
+            return NSLocalizedString("These_items_match_perfectly", comment: "Message shown when items match perfectly")
+        }
+    }
 
     // Default case
-    return "These items might match depending on style preferences."
+    return NSLocalizedString("Default_message", comment: "Message shown when items might match depending on style preferences")
+
 }

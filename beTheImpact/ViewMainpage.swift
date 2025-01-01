@@ -93,7 +93,7 @@ struct ViewMainpage: View {
                             },
                             .default(Text("Upload from Photos")) {
                                 showImagePicker.toggle()
-                               showSelectedImage=true// If the user chooses to upload a photo
+                                showSelectedImage=true// If the user chooses to upload a photo
                             },
                             .cancel() // Close the ActionSheet
                         ]
@@ -121,22 +121,11 @@ struct ViewMainpage: View {
                 .fullScreenCover(isPresented: $showSelectedImage) {
                     OutfitDetails(realImage:$cameraImage)}
                 
-                     // Open the camera in a new view
-                }
-            }.navigationBarBackButtonHidden(true)
-        }
+                // Open the camera in a new view
+            }
+        }.navigationBarBackButtonHidden(true)
     }
-
-
-//struct CameraView: View {
-//    @Binding var selectedImage: UIImage?
-//    
-//    var body: some View {
-//        UIKitCamera(selectedImage: $selectedImage)
-//            .edgesIgnoringSafeArea(.all) // Make the camera cover the entire screen
-//
-//    }
-//}
+}
 
 
 #Preview {

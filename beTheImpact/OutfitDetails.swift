@@ -1,18 +1,3 @@
-
-////// MARK: - Color Hex Initialization
-extension Color {
-    init(hex: String) {
-        let scanner = Scanner(string: hex)
-        scanner.scanLocation = 1  // skip the '#'
-        var rgb: UInt64 = 0
-        scanner.scanHexInt64(&rgb)
-        let r = Double((rgb >> 16) & 0xFF) / 255.0
-        let g = Double((rgb >> 8) & 0xFF) / 255.0
-        let b = Double(rgb & 0xFF) / 255.0
-        self.init(red: r, green: g, blue: b)
-    }
-}
-
 import SwiftUI
 import CoreML
 import UIKit
@@ -30,12 +15,12 @@ struct OutfitDetails: View {
     @State var cameraImage2: UIImage?
     @State private var cameraError: CameraPermission.CameraError?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+    
     var body: some View {
         NavigationView {
             ZStack {
-                VStack(spacing: 15) {
-                    VStack(alignment: .leading, spacing: 15) {
+                VStack{
+                    VStack(alignment: .center, spacing: 15) {
                         if let uiImage = realImage {
                             Image(uiImage: uiImage)
                                 .resizable()
@@ -45,47 +30,40 @@ struct OutfitDetails: View {
                                 .onAppear {
                                     // Perform the prediction when the image appears
                                     performPrediction(with: uiImage)
-                                    
-                                    
                                 }
-                            
-                            
-                            
                         } else {
                             Text("No Image Captured or Selected")
                                 .foregroundColor(.red)
                                 .bold()
                         }
-                        
-//                        Text("Item Details")
-//                            .font(.custom("Tajawal-Bold", size: 18))
-//                            .foregroundColor(Color.pur)
-//                            .accessibilityLabel("Item details")
-//                            .accessibilityHint("Item details")
-                        
                     }
                     
-                    VStack(alignment: .leading, spacing: 15){
-                        if realImage != nil {
-                            Text("Item Details")
-                                .font(.custom("Tajawal-Bold", size: 18))
-                                .foregroundColor(Color.pur)
-                                .accessibilityLabel("Item details")
-                                .accessibilityHint("Item details")
+                    VStack(spacing: 15){
+                        VStack{
+                            if realImage != nil {
+                                Text("Item Details")
+                                    .font(.custom("Tajawal-Bold", size: 18))
+                                    .foregroundColor(Color.pur)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.top)
+                                    .accessibilityLabel("Item details")
+                                    .accessibilityHint("Item details")
+                            }
                         }
-                       
+                        
+                        VStack(alignment: .leading){
                             if let prediction = predictionResult {
                                 Text("\(prediction)")
                                     .font(.custom("Tajawal-Regular", size: 18))
                                     .foregroundColor(Color.pur)
-                                    .fixedSize()
+                                //.fixedSize()
                                     .accessibilityLabel("Details")
                                     .accessibilityHint("\(prediction)")
                                 
                             }
+                        }.frame(maxWidth: .infinity, alignment: .leading)
                         
-                        }.padding()
-                    
+                    }.padding()
                     Spacer()
                     
                     VStack(spacing: 15) {
@@ -102,20 +80,6 @@ struct OutfitDetails: View {
                         .accessibilityLabel("Another Item Button")
                         .accessibilityHint("Another Item")
                         
-//                        Button(action: {
-//                            print("Button 2 tapped")
-//                        }) {
-//                            Text("Try Again")
-//                                .font(.custom("Tajawal-Bold", size: 20))
-//                                .foregroundColor(Color(hue: 0.729, saturation: 0.762, brightness: 0.268))
-//                                .frame(maxWidth: .infinity, maxHeight: 50)
-//                                .overlay(
-//                                    RoundedRectangle(cornerRadius: 10)
-//                                        .stroke(Color.pur, lineWidth: 1)
-//                                )
-//                        }
-//                        .accessibilityLabel("Try Again Button")
-//                        .accessibilityHint("Try Again")
                     }
                     .padding()
                     .actionSheet(isPresented: $showActionSheet2) {
@@ -157,23 +121,23 @@ struct OutfitDetails: View {
                             realImage2: $cameraImage2
                         )
                     }
-
+                    
                 }.padding()
                 
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Text("Back")
-                                .font(.custom("Tajawal-Bold", size: 18))
-                                .foregroundColor(Color.pur)
-                                .padding()
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button(action: {
+                                presentationMode.wrappedValue.dismiss()
+                            }) {
+                                Text("Back")
+                                    .font(.custom("Tajawal-Bold", size: 18))
+                                    .foregroundColor(Color.pur)
+                                    .padding()
+                            }
                         }
                     }
-                }
                 
-               // .frame(maxWidth: .infinity, maxHeight: .infinity)
+                // .frame(maxWidth: .infinity, maxHeight: .infinity)
                 if showPopup {
                     Color.black.opacity(0.4)
                         .edgesIgnoringSafeArea(.all)
@@ -200,7 +164,7 @@ struct OutfitDetails: View {
         }.navigationBarBackButtonHidden(true)
     }
     
-
+    
     func performPrediction(with image: UIImage) {
         print("Starting prediction...")
         showPopup = true // Show popup when starting the prediction
@@ -211,7 +175,7 @@ struct OutfitDetails: View {
                 DispatchQueue.main.async {
                     self.englishPredictionResult = result
                 }
-
+                
                 // Translate only for display purposes
                 translateToArabic(result) { translatedResult in
                     DispatchQueue.main.async {
@@ -235,12 +199,12 @@ struct OutfitDetails: View {
             print("Failed to preprocess image.")
             return nil
         }
-
+        
         do {
             if let model = ModelManager.shared.model {
                 var bestPrompt: String? = nil
                 var highestScore: Float = -Float.infinity
-
+                
                 let batchSize = 50
                 for batchIndex in stride(from: 0, to: Tokens.tokenizedPrompts.count, by: batchSize) {
                     let batch = Array(Tokens.tokenizedPrompts[batchIndex..<min(batchIndex + batchSize, Tokens.tokenizedPrompts.count)])
@@ -249,7 +213,7 @@ struct OutfitDetails: View {
                         for (i, token) in tokens.enumerated() {
                             inputIDs[i] = NSNumber(value: token)
                         }
-
+                        
                         let input = fashion_clippInput(input_ids: inputIDs, pixel_values: pixelValues)
                         let output = try model.prediction(input: input)
                         let logits = output.logits_per_text
@@ -277,7 +241,7 @@ struct OutfitDetails: View {
 // MARK: - Loading Spinner View
 struct LoadingSpinner: View {
     @State private var isAnimating = false
-
+    
     var body: some View {
         Circle()
             .trim(from: 0.0, to: 0.5)
@@ -288,5 +252,19 @@ struct LoadingSpinner: View {
             .onAppear {
                 isAnimating = true
             }
+    }
+}
+
+// MARK: - Color Hex Initialization
+extension Color {
+    init(hex: String) {
+        let scanner = Scanner(string: hex)
+        scanner.scanLocation = 1  // skip the '#'
+        var rgb: UInt64 = 0
+        scanner.scanHexInt64(&rgb)
+        let r = Double((rgb >> 16) & 0xFF) / 255.0
+        let g = Double((rgb >> 8) & 0xFF) / 255.0
+        let b = Double(rgb & 0xFF) / 255.0
+        self.init(red: r, green: g, blue: b)
     }
 }

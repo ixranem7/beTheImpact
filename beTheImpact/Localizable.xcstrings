@@ -1,42 +1,48 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    " Use the camera to know the outfit:" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "استعمل الكاميرا لمعرفة القطعة:"
-          }
-        }
-      }
-    },
     "%@" : {
 
     },
     "Another Piece" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قطعة أخرى"
+          }
+        }
+      }
     },
     "Another Piece Button" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضغط هنا لاختيار قطعة أخرى"
+          }
+        }
+      }
     },
     "App logo" : {
 
     },
     "Back" : {
-
-    },
-    "camera button" : {
-
-    },
-    "Camera Instructions " : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تعليمات الكاميرا"
+            "value" : "رجوع"
+          }
+        }
+      }
+    },
+    "camera button" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "زر الكاميرا"
           }
         }
       }
@@ -52,11 +58,24 @@
       }
     },
     "Choose an option" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر أحد الخيارات"
+          }
+        }
+      }
     },
     "Default_message" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هذه القطع لا تنسجم مع بعضها البعض "
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -66,7 +85,14 @@
       }
     },
     "Details" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التفاصيل"
+          }
+        }
+      }
     },
     "Determining if the items match..." : {
       "localizations" : {
@@ -78,12 +104,22 @@
         }
       }
     },
+    "Finish" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إنهاء"
+          }
+        }
+      }
+    },
     "Go to settings and enable camera" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اذهب إلى الإعدادات "
+            "value" : "اذهب إلى الإعدادات لإتاحة الكاميرا"
           }
         }
       }
@@ -110,10 +146,14 @@
       }
     },
     "How Zahi works." : {
-
-    },
-    "Image not found in Assets." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كيف يعمل زاهي"
+          }
+        }
+      }
     },
     "Image of %@" : {
       "localizations" : {
@@ -137,13 +177,34 @@
       }
     },
     "Item details" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تفاصيل القطعة"
+          }
+        }
+      }
     },
     "Item Details" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تفاصيل القطعة"
+          }
+        }
+      }
     },
     "Just a moment! We're working on finding the best result for you..." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتظر قليلاً! نحن نعمل على إيجاد تفاصيل قطعتك.."
+          }
+        }
+      }
     },
     "Key" : {
       "extractionState" : "manual",
@@ -159,19 +220,15 @@
     "Key 1" : {
       "extractionState" : "manual"
     },
-    "Make sure you are slightly away from the camera so the piece appears clearly" : {
-      "extractionState" : "stale",
+    "Matching result" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تأكد من أنك بعيداً قليلاً حتى تظهر القطعة بوضوح"
+            "value" : "نتيجة المطابقة "
           }
         }
       }
-    },
-    "Matching result" : {
-
     },
     "next" : {
       "extractionState" : "manual",
@@ -190,6 +247,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "التالي"
+          }
+        }
+      }
+    },
+    "No Image Captured or Selected" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم تقم بتصوير أو اختيار قطعة..!"
+          }
+        }
+      }
+    },
+    "not" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "لا"
           }
         }
       }
@@ -214,9 +292,6 @@
           }
         }
       }
-    },
-    "press to take a photo or upload an image" : {
-
     },
     "Proceed to the next page or start the app" : {
       "localizations" : {
@@ -261,7 +336,14 @@
       }
     },
     "Take a photo" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التقط صورة"
+          }
+        }
+      }
     },
     "These_items_do_not_match" : {
       "extractionState" : "manual",
@@ -298,37 +380,76 @@
       }
     },
     "This is a description of the app." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هنا وصف البرنامج"
+          }
+        }
+      }
     },
     "This is the title of the onboarding page." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هذا عنوان البداية"
+          }
+        }
+      }
     },
     "This text provides additional information about the app." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هنا وصف إضافي للبرنامج"
+          }
+        }
+      }
     },
     "Try Again" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أعد المحاولة"
+          }
+        }
+      }
     },
     "Try Again Button" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضغط هنا لإعادة المحاولة"
+          }
+        }
+      }
     },
     "Upload from Photos" : {
-
-    },
-    "Use" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تحميل من الصور"
+          }
+        }
+      }
     },
     "Use the camera or upload to explore your outfit" : {
-
-    },
-    "Welcome" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعمل الكاميرا أو اختر صورة من الألبوم لمعرفة تفاصيل قطعتك"
+          }
+        }
+      }
     },
     "Welcome to your digital wardrobe!" : {
-
-    },
-    "Welcome to your digital wardrobe! " : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -360,7 +481,14 @@
       }
     },
     "Welcome to Zahi." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أهلاً بك في زاهي"
+          }
+        }
+      }
     },
     "You have not authorized camera use" : {
       "localizations" : {
@@ -373,7 +501,14 @@
       }
     },
     "Your taste and vision, harmony and inspiration." : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ذوقك ورؤيتك .. تناغم و إلهام!"
+          }
+        }
+      }
     },
     "Your taste and vision... harmony and inspiration!" : {
       "localizations" : {

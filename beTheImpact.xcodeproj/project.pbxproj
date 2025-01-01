@@ -29,9 +29,22 @@
 		7F65EBF22D12B9F9008EDC11 /* beTheImpactUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beTheImpactUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B1AE03862D24A2D4003B0CF7 /* Exceptions for "beTheImpact" folder in "beTheImpact" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 7F65EBD72D12B9F8008EDC11 /* beTheImpact */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		7F65EBDA2D12B9F8008EDC11 /* beTheImpact */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B1AE03862D24A2D4003B0CF7 /* Exceptions for "beTheImpact" folder in "beTheImpact" target */,
+			);
 			path = beTheImpact;
 			sourceTree = "<group>";
 		};
@@ -402,6 +415,7 @@
 				DEVELOPMENT_TEAM = 96J643Y4WF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = beTheImpact/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -433,6 +447,7 @@
 				DEVELOPMENT_TEAM = 96J643Y4WF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = beTheImpact/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

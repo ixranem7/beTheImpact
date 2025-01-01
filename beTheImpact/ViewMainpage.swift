@@ -10,6 +10,8 @@ struct ViewMainpage: View {
     @State var cameraImage: UIImage?
     @State private var cameraError: CameraPermission.CameraError?
     
+    @State var shouldNavigate: Bool = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,7 +31,7 @@ struct ViewMainpage: View {
                         .foregroundColor(Color.white)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 30)
-                        .accessibilityLabel("Welcome")
+                        .accessibilityLabel("Welcome to your digital wardrobe!")
                         .accessibilityHint("Welcome to your digital wardrobe!")
                     
                     Text("Use the camera or upload to explore your outfit")
@@ -38,7 +40,7 @@ struct ViewMainpage: View {
                         .foregroundColor(Color.white.opacity(0.8))
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 40)
-                        .accessibilityLabel("Use")
+                        .accessibilityLabel("Use the camera or upload to explore your outfit")
                         .accessibilityHint("Use the camera or upload to explore your outfit")
                     
                     Spacer()
@@ -68,7 +70,7 @@ struct ViewMainpage: View {
                     .padding()
                     .scaleEffect(showActionSheet ? 1.1 : 1.0) // Zoom effect when pressed
                     .accessibilityLabel("camera button")
-                    .accessibilityHint("press to take a photo or upload an image")
+                    .accessibilityHint("camera button")
                     .animation(.spring(), value: showActionSheet)
                     
                     Spacer()
@@ -106,7 +108,9 @@ struct ViewMainpage: View {
                 
                 // Display the camera in full-screen when selected
                 .fullScreenCover(isPresented: $showCamera) {
-                    CameraView(selectedImage: $cameraImage) // Open the camera in a new view
+                    //showSelectedImage=true
+                    UIKitCamera(selectedImage: $cameraImage)
+                        .ignoresSafeArea()// Open the camera in a new view
                 }
                 
                 // Display the ImagePicker to choose an image from the gallery
@@ -118,21 +122,21 @@ struct ViewMainpage: View {
                     OutfitDetails(realImage:$cameraImage)}
                 
                      // Open the camera in a new view
-                }.navigationBarBackButtonHidden(true)
-            }
+                }
+            }.navigationBarBackButtonHidden(true)
         }
     }
 
 
-struct CameraView: View {
-    @Binding var selectedImage: UIImage?
-    
-    var body: some View {
-        UIKitCamera(selectedImage: $selectedImage)
-            .edgesIgnoringSafeArea(.all) // Make the camera cover the entire screen
-
-    }
-}
+//struct CameraView: View {
+//    @Binding var selectedImage: UIImage?
+//    
+//    var body: some View {
+//        UIKitCamera(selectedImage: $selectedImage)
+//            .edgesIgnoringSafeArea(.all) // Make the camera cover the entire screen
+//
+//    }
+//}
 
 
 #Preview {

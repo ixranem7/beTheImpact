@@ -45,30 +45,50 @@ struct OutfitDetails: View {
                                 .onAppear {
                                     // Perform the prediction when the image appears
                                     performPrediction(with: uiImage)
+                                    
+                                    
                                 }
+                            
+                            
+                            
                         } else {
-                            Text("Image not found in Assets.")
+                            Text("No Image Captured or Selected")
                                 .foregroundColor(.red)
+                                .bold()
                         }
                         
-                        Text("Item Details")
-                            .font(.custom("Tajawal-Bold", size: 18))
-                            .foregroundColor(Color.pur)
-                            .accessibilityLabel("Item details")
-                            .accessibilityHint("Item details")
+//                        Text("Item Details")
+//                            .font(.custom("Tajawal-Bold", size: 18))
+//                            .foregroundColor(Color.pur)
+//                            .accessibilityLabel("Item details")
+//                            .accessibilityHint("Item details")
                         
-                        if let prediction = predictionResult {
-                            Text("\(prediction)")
-                                .font(.custom("Tajawal-Regular", size: 18))
-                                .foregroundColor(Color.pur)
-                                .accessibilityLabel("Details")
-                                .accessibilityHint("\(prediction)")
-                        }
                     }
+                    
+                    VStack(alignment: .leading, spacing: 15){
+                        if realImage != nil {
+                            Text("Item Details")
+                                .font(.custom("Tajawal-Bold", size: 18))
+                                .foregroundColor(Color.pur)
+                                .accessibilityLabel("Item details")
+                                .accessibilityHint("Item details")
+                        }
+                       
+                            if let prediction = predictionResult {
+                                Text("\(prediction)")
+                                    .font(.custom("Tajawal-Regular", size: 18))
+                                    .foregroundColor(Color.pur)
+                                    .fixedSize()
+                                    .accessibilityLabel("Details")
+                                    .accessibilityHint("\(prediction)")
+                                
+                            }
+                        
+                        }.padding()
                     
                     Spacer()
                     
-                    VStack(spacing: 16) {
+                    VStack(spacing: 15) {
                         Button(action: {
                             showActionSheet2 = true
                         }) {
@@ -82,20 +102,20 @@ struct OutfitDetails: View {
                         .accessibilityLabel("Another Piece Button")
                         .accessibilityHint("Another Piece")
                         
-                        Button(action: {
-                            print("Button 2 tapped")
-                        }) {
-                            Text("Try Again")
-                                .font(.custom("Tajawal-Bold", size: 20))
-                                .foregroundColor(Color(hue: 0.729, saturation: 0.762, brightness: 0.268))
-                                .frame(maxWidth: .infinity, maxHeight: 50)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.pur, lineWidth: 1)
-                                )
-                        }
-                        .accessibilityLabel("Try Again Button")
-                        .accessibilityHint("Try Again")
+//                        Button(action: {
+//                            print("Button 2 tapped")
+//                        }) {
+//                            Text("Try Again")
+//                                .font(.custom("Tajawal-Bold", size: 20))
+//                                .foregroundColor(Color(hue: 0.729, saturation: 0.762, brightness: 0.268))
+//                                .frame(maxWidth: .infinity, maxHeight: 50)
+//                                .overlay(
+//                                    RoundedRectangle(cornerRadius: 10)
+//                                        .stroke(Color.pur, lineWidth: 1)
+//                                )
+//                        }
+//                        .accessibilityLabel("Try Again Button")
+//                        .accessibilityHint("Try Again")
                     }
                     .padding()
                     .actionSheet(isPresented: $showActionSheet2) {
@@ -126,7 +146,7 @@ struct OutfitDetails: View {
                         Text(error.recoverySuggestion ?? "Try again later")
                     }
                     .fullScreenCover(isPresented: $showCamera2) {
-                        CameraView(selectedImage: $cameraImage2)
+                        UIKitCamera(selectedImage: $cameraImage2)
                     }
                     .fullScreenCover(isPresented: $showImagePicker2) {
                         ImagePicker(selectedImage: $cameraImage2)
@@ -139,7 +159,7 @@ struct OutfitDetails: View {
                     }
 
                 }
-                .navigationBarBackButtonHidden(true)
+                
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
@@ -151,7 +171,7 @@ struct OutfitDetails: View {
                     }
                 }
                 .padding()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+               // .frame(maxWidth: .infinity, maxHeight: .infinity)
                 if showPopup {
                     Color.black.opacity(0.4)
                         .edgesIgnoringSafeArea(.all)
@@ -175,7 +195,7 @@ struct OutfitDetails: View {
                     .shadow(radius: 20)
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
 

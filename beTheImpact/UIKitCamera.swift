@@ -13,6 +13,7 @@ struct UIKitCamera: UIViewControllerRepresentable {
     
     @Binding var selectedImage: UIImage?
     @Environment(\.dismiss) var dismiss
+    //@Binding var shouldNavigate: Bool
     
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
@@ -38,11 +39,13 @@ struct UIKitCamera: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            //UIImagePickerController.InfoKey
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image
+//                parent.selectedImage = image
+//                parent.dismiss()
+                self.parent.selectedImage = image as? UIImage
+                //self.parent.shouldNavigate = true // Trigger navigation
             }
-            parent.dismiss()
+            
         }
     }
 }

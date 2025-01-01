@@ -8,6 +8,12 @@ struct SecondOutfitDetails: View {
     @State private var matchResult: String? = nil
     @Binding var firstItemPrediction: String?
     @Binding var realImage2: UIImage?
+    @State private var showActionSheet3 = false
+    @State private var showCamera3: Bool = false
+    @State private var showImagePicker3: Bool = false
+    @State private var showSelectedImage3: Bool = false
+    @State var cameraImage3: UIImage?
+    @State private var cameraError: CameraPermission.CameraError?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
@@ -25,17 +31,31 @@ struct SecondOutfitDetails: View {
                                         // Perform the prediction when the image appears
                                         performPrediction(with: uiImage)
                                     }
+                            
 
                             } else {
-                                Text("Image not found in Assets.")
+                                Text("No Image Captured or Selected")
                                     .foregroundColor(.red)
+                                    .bold()
                             }
                             
-                            Text("Item Details")
-                                .font(.custom("Tajawal-Bold", size: 18))
-                                .foregroundColor(Color.pur)
-                                .accessibilityLabel("Item details")
-                                .accessibilityHint("Item details")
+                            
+                            
+//                             else {
+//                                Text("Determining if the items match...")
+//                                    .foregroundColor(.gray)
+//                                    .padding()
+//                            }
+                        }
+                        
+                        VStack(alignment: .leading, spacing: 15){
+                            if realImage2 != nil {
+                                Text("Item Details")
+                                    .font(.custom("Tajawal-Bold", size: 18))
+                                    .foregroundColor(Color.pur)
+                                    .accessibilityLabel("Item details")
+                                    .accessibilityHint("Item details")
+                            }
                             
                             if let prediction = predictionResult2 {
                                 Text("\(prediction)")
@@ -48,21 +68,17 @@ struct SecondOutfitDetails: View {
                             if let match = matchResult {
                                 Text(match)
                                     .font(.custom("Tajawal-Regular", size: 18))
+                                    .bold()
                                     .foregroundColor(match.contains("not") ? .red : .green)
                                     .accessibilityLabel("Matching result")
-                                    .accessibilityHint(match)
-                            } else {
-                                Text("Determining if the items match...")
-                                    .foregroundColor(.gray)
-                                    .padding()
-                            }
+                                .accessibilityHint(match)}
                         }
                         Spacer()
                         
                         VStack(spacing: 15){
                             
                             Button(action: {
-                                print("Button 2 tapped")
+                                showActionSheet3 = true
                             }) {
                                 Text("Try Again")
                                     .font(.custom("Tajawal-Bold", size: 20))
@@ -75,8 +91,42 @@ struct SecondOutfitDetails: View {
                             .accessibilityLabel("Try Again Button")
                             .accessibilityHint("Try Again")
                             
-                        }
-                    } .navigationBarBackButtonHidden(true)
+                        }.padding()
+                            .actionSheet(isPresented: $showActionSheet3) {
+                                ActionSheet(
+                                    title: Text("Choose an option"),
+                                    buttons: [
+                                        .default(Text("Take a photo")) {
+                                            if let error = CameraPermission.checkPermission() {
+                                                cameraError = error
+                                            } else {
+                                                showCamera3.toggle()
+                                                showSelectedImage3 = true
+                                            }
+                                        },
+                                        .default(Text("Upload from Photos")) {
+                                            showImagePicker3.toggle()
+                                            showSelectedImage3 = true
+                                        },
+                                        .cancel()
+                                    ]
+                                )
+                            }
+                        
+                            .fullScreenCover(isPresented: $showCamera3) {
+                                UIKitCamera(selectedImage: $cameraImage3)
+                            }
+                            .fullScreenCover(isPresented: $showImagePicker3) {
+                                ImagePicker(selectedImage: $cameraImage3)
+                            }
+//                            .fullScreenCover(isPresented: $showSelectedImage3) {
+//                                SecondOutfitDetails(
+//                                    firstItemPrediction: $englishPredictionResult, // Always pass English prediction for comparisons
+//                                    realImage2: $cameraImage2
+//                                )
+//                            }
+                        
+                    }
                         .toolbar{
                             ToolbarItem(placement: .navigationBarLeading){
                                 Button(action: {
@@ -85,8 +135,13 @@ struct SecondOutfitDetails: View {
                                     Text("Back").bold()
                                         .foregroundColor(Color.pur)
                                 }
-                            }}.padding()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            }}
+                       
+                        .navigationBarItems(
+                            trailing: NavigationLink( destination: ViewMainpage(), label: {Text("Finish").bold().foregroundColor(Color.pur)
+                            }))
+                        .padding()
+                        //.frame(maxWidth: .infinity, maxHeight: .infinity)
                     if showPopup {
                         Color.black.opacity(0.4)
                             .edgesIgnoringSafeArea(.all)
@@ -107,7 +162,7 @@ struct SecondOutfitDetails: View {
                         .shadow(radius: 20)
                     }
                 }
-            }
+            }.navigationBarBackButtonHidden(true)
         }
 //        if showPopup {
 //            Color.black.opacity(0.4)

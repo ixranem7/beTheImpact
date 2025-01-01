@@ -15,11 +15,11 @@ struct SecondOutfitDetails: View {
     @State var cameraImage3: UIImage?
     @State private var cameraError: CameraPermission.CameraError?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+   
     var body: some View {
             NavigationView {
                 ZStack{
-                    VStack {
+                    VStack(spacing: 15) {
                         VStack(alignment: .leading, spacing: 15) {
                             if let uiImage = realImage2 {
                                 Image(uiImage: uiImage)
@@ -66,32 +66,34 @@ struct SecondOutfitDetails: View {
                             }
                             
                             if let match = matchResult {
+                                
                                 Text(match)
                                     .font(.custom("Tajawal-Regular", size: 18))
                                     .bold()
-                                    .foregroundColor(match.contains("not") ? .red : .green)
+                                    .foregroundColor(Color.pur)
+                                    //.foregroundColor(match.contains("\(condition)") ? .red : .green)
                                     .accessibilityLabel("Matching result")
                                 .accessibilityHint(match)}
-                        }
+                        }.padding()
                         Spacer()
                         
-                        VStack(spacing: 15){
-                            
-                            Button(action: {
-                                showActionSheet3 = true
-                            }) {
-                                Text("Try Again")
-                                    .font(.custom("Tajawal-Bold", size: 20))
-                                    .frame(maxWidth: .infinity, maxHeight: 50)
-                                    .background(Color.pur)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                                
-                            }
-                            .accessibilityLabel("Try Again Button")
-                            .accessibilityHint("Try Again")
-                            
-                        }.padding()
+//                        VStack(spacing: 15){
+//                            
+//                            Button(action: {
+//                                showActionSheet3 = true
+//                            }) {
+//                                Text("Try Again")
+//                                    .font(.custom("Tajawal-Bold", size: 20))
+//                                    .frame(maxWidth: .infinity, maxHeight: 50)
+//                                    .background(Color.pur)
+//                                    .foregroundColor(.white)
+//                                    .cornerRadius(10)
+//                                
+//                            }
+//                            .accessibilityLabel("Try Again Button")
+//                            .accessibilityHint("Try Again")
+//                            
+//                        }.padding()
                             .actionSheet(isPresented: $showActionSheet3) {
                                 ActionSheet(
                                     title: Text("Choose an option"),
@@ -113,12 +115,12 @@ struct SecondOutfitDetails: View {
                                 )
                             }
                         
-                            .fullScreenCover(isPresented: $showCamera3) {
-                                UIKitCamera(selectedImage: $cameraImage3)
-                            }
-                            .fullScreenCover(isPresented: $showImagePicker3) {
-                                ImagePicker(selectedImage: $cameraImage3)
-                            }
+//                            .fullScreenCover(isPresented: $showCamera3) {
+//                                UIKitCamera(selectedImage: $cameraImage3)
+//                            }
+//                            .fullScreenCover(isPresented: $showImagePicker3) {
+//                                ImagePicker(selectedImage: $cameraImage3)
+//                            }
 //                            .fullScreenCover(isPresented: $showSelectedImage3) {
 //                                SecondOutfitDetails(
 //                                    firstItemPrediction: $englishPredictionResult, // Always pass English prediction for comparisons
@@ -126,21 +128,23 @@ struct SecondOutfitDetails: View {
 //                                )
 //                            }
                         
-                    }
+                    }.padding()
                         .toolbar{
                             ToolbarItem(placement: .navigationBarLeading){
                                 Button(action: {
                                     presentationMode.wrappedValue.dismiss()
                                 }){
-                                    Text("Back").bold()
+                                    Text("Back")
+                                        .font(.custom("Tajawal-Bold", size: 18))
                                         .foregroundColor(Color.pur)
+                                        .padding()
                                 }
                             }}
                        
                         .navigationBarItems(
-                            trailing: NavigationLink( destination: ViewMainpage(), label: {Text("Finish").bold().foregroundColor(Color.pur)
+                            trailing: NavigationLink( destination: ViewMainpage(), label: {Text("Finish").font(.custom("Tajawal-Bold", size: 18)).foregroundColor(Color.pur).padding()
                             }))
-                        .padding()
+                        
                         //.frame(maxWidth: .infinity, maxHeight: .infinity)
                     if showPopup {
                         Color.black.opacity(0.4)

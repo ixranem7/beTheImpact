@@ -123,7 +123,7 @@ struct OnboardingView1: View {
                                     .frame(height: 210) // Fixed height for images
                                     .accessibilityLabel("Image of \(index == 0 ? "Welcome to Zahi" : "How Zahi works")") // Image description
                                 
-                                VStack(alignment: .leading, spacing: 10) {
+                                VStack(alignment: .leading, spacing: 15) {
                                     Text(index == 0 ? "Welcome to Zahi!" : "How Zahi works?")
                                         .font(.custom("Tajawal-Bold", size: 28))
                                         .padding(.top, 40)

@@ -34,7 +34,7 @@ struct OutfitDetails: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack {
+                VStack(spacing: 15) {
                     VStack(alignment: .leading, spacing: 15) {
                         if let uiImage = realImage {
                             Image(uiImage: uiImage)
@@ -92,15 +92,15 @@ struct OutfitDetails: View {
                         Button(action: {
                             showActionSheet2 = true
                         }) {
-                            Text("Another Piece")
+                            Text("Another Item")
                                 .font(.custom("Tajawal-Bold", size: 20))
                                 .frame(maxWidth: .infinity, maxHeight: 50)
                                 .background(Color.pur)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
-                        .accessibilityLabel("Another Piece Button")
-                        .accessibilityHint("Another Piece")
+                        .accessibilityLabel("Another Item Button")
+                        .accessibilityHint("Another Item")
                         
 //                        Button(action: {
 //                            print("Button 2 tapped")
@@ -158,19 +158,21 @@ struct OutfitDetails: View {
                         )
                     }
 
-                }
+                }.padding()
                 
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
                             presentationMode.wrappedValue.dismiss()
                         }) {
-                            Text("Back").bold()
+                            Text("Back")
+                                .font(.custom("Tajawal-Bold", size: 18))
                                 .foregroundColor(Color.pur)
+                                .padding()
                         }
                     }
                 }
-                .padding()
+                
                // .frame(maxWidth: .infinity, maxHeight: .infinity)
                 if showPopup {
                     Color.black.opacity(0.4)

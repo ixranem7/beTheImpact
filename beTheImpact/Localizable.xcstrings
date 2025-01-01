@@ -4,7 +4,7 @@
     "%@" : {
 
     },
-    "Another Piece" : {
+    "Another Item" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -14,7 +14,7 @@
         }
       }
     },
-    "Another Piece Button" : {
+    "Another Item Button" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -261,17 +261,6 @@
         }
       }
     },
-    "not" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "لا"
-          }
-        }
-      }
-    },
     "OK" : {
       "localizations" : {
         "ar" : {
@@ -288,7 +277,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ضع الكاميرا أمام الملابس، وسيخبرك التطبيق بتفاصيلها ويوفر لك اقتراحات للتنسيق، و يمكنك حفظ تنسيقاتك المفضلة والرجوع إليها في أي وقت."
+            "value" : "وجّه الكاميرا نحو ملابسك، وسيخبرك التطبيق بتفاصيلها وتناسقها فوراً!"
           }
         }
       }
@@ -405,26 +394,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "هنا وصف إضافي للبرنامج"
-          }
-        }
-      }
-    },
-    "Try Again" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "أعد المحاولة"
-          }
-        }
-      }
-    },
-    "Try Again Button" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "اضغط هنا لإعادة المحاولة"
           }
         }
       }
